@@ -34,10 +34,16 @@
                 font-size: 0.8em;
             }
 
-            .bottom-corner {
+            .bottom-left-corner {
                 position: absolute;
                 bottom: 1rem;
                 left: 1rem;
+            }
+
+            .bottom-right-corner {
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
             }
         </style>
     </head>
@@ -59,6 +65,25 @@
 
         <p class="b">Contact us at your local pond today!*</p>
 
-        <span class="bottom-corner">* This is a joke</span>
+        <span class="bottom-left-corner">* This is a joke</span>
+        <span class="bottom-right-corner" id="helped"></span>
+
+        <script>
+            async function updateHelped() {
+                const a66tyb =
+                    "aHR0cHM6Ly96dGZlMmNyNXFhamJ2NW5xbGpycGFlcHZpNDB5ZmJtei5sYW1iZGEtdXJsLnVzLWVhc3QtMS5vbi5hd3Mv";
+
+                const value = await fetch(atob(a66tyb))
+                    .then((res) => res.json())
+                    .then((j) => j.value);
+
+                console.log(value);
+
+                document.getElementById("helped").innerHTML =
+                    `${value} ducks filed`;
+            }
+
+            updateHelped();
+        </script>
     </body>
 </html>
